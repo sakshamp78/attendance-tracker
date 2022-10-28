@@ -9,7 +9,7 @@ function Footer() {
                     <div className="row">
                         <div className="col-sm-12 col-md-6">
                             <h6>About</h6>
-                            <p className="text-justify"> This website is a project for <b>Imbesideyou Development Task</b> </p>
+                            <p className="text-justify"> This website is a project for <b>Imbesideyou Development Task.</b> </p>
                         </div>
                     </div>
                     <hr></hr>
