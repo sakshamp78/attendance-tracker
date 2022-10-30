@@ -7,7 +7,6 @@ import os
 from pathlib import Path
 import cv2
 import numpy as np
-# import face_recognition
 from imageio import imread
 from flask_cors import CORS
 
