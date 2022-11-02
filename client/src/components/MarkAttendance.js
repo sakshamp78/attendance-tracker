@@ -44,9 +44,11 @@ function MarkAttendance() {
             setIsLoading(true);
             fetch(`http://127.0.0.1:5000/mark_attendance/${admission_No}/`, {
                 method: "POST",
+                mode: 'cors',
                 headers: {
+                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
                 },
                 body: JSON.stringify({
                     base64_string: image

@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import cv2
 import numpy as np
+import face_recognition
 from imageio import imread
 from flask_cors import CORS
 
@@ -119,6 +120,59 @@ def add_student_image(admission_No):
         res = jsonify({'message': 'Allowed file types are png, jpg, jpeg'})
         res.status_code = 400
         return res
+
+
+# ---Marking Attendance Route---
+# ---Corner Cases Handeling---
+@app.route('/mark_attendance/<admission_No>/', methods=['POST'])
+def mark_attendance(admission_No):
+    student = Students.query.filter_by(admission_No=admission_No).first()
+    if student == None:
+        res = jsonify({'message' : 'Admission no. not found.' , 'matched' : '0'})
+        return res
+    if student.present_status:
+        res = jsonify({'message' : 'This Admission no. has already been marked present' , 'matched' : '1'})
+        return res
+    base64_string = request.json['base64_string']
+    def data_uri_to_cv2_img(uri):
+        encoded_data = uri.split(',')[1]
+        nparr = np.fromstring(base64.b64decode(encoded_data), np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        return img
+
+    img =data_uri_to_cv2_img(base64_string)
+    img_test = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+    img_encoding_test = face_recognition.face_encodings(img_test)
+    if(student.image_uploaded == False):
+        res = jsonify({'message' : 'Image not uploaded by teacher.' , 'matched' : '0'})
+        return res
+    if len(img_encoding_test) == 0 :
+        res = jsonify({'message' : 'Face not detected , try again.' , 'matched' : '0'})
+        return res
+    path = 'static\ImgUploads'
+    myList = os.listdir(path)
+    for cl in myList:
+        img_found = cv2.imread(f'{path}/{cl}')
+        img_real = cv2.cvtColor(img_found, cv2.COLOR_RGB2BGR)
+        img_encoding_real = face_recognition.face_encodings(img_real)[0]
+        result = face_recognition.compare_faces([img_encoding_real],img_encoding_test[0])
+        name = os.path.splitext(cl)[0]
+        if name == admission_No  :
+            if result[0] :
+                student.present_status = True
+                now = datetime.now()
+                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+                student.date = dt_string
+                db.session.commit()
+                message = f'Attendance for {student.student_name} is marked successfully'
+                res = jsonify({'message': message , 'matched' : '1'})
+                return res
+            else :
+                res = jsonify({'message': 'Face not matched' , 'matched' : '0'})
+                return res
+        
+    res = jsonify({'message' : 'error occured' , 'matched' : '0'})
+    return res
 
 
 if __name__ == "__main__":

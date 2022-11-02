@@ -79,7 +79,7 @@ function FormAddStudent({ fetchStudent }) {
                                                 <input
                                                     type="text"
                                                     value={student_name}
-                                                    placeholder="For eg : Saksham Pandey"
+                                                    placeholder="For eg : Prakhar Shukla"
                                                     onChange={(e) => setStudentName(e.target.value)}
                                                     required={true}
                                                     className="form-control" />
@@ -90,7 +90,7 @@ function FormAddStudent({ fetchStudent }) {
                                                 <input
                                                     type="text"
                                                     value={admission_No}
-                                                    placeholder="For eg : 20JE0838"
+                                                    placeholder="For eg : 20JE0700"
                                                     onChange={(e) => setAdmissionNo(e.target.value)}
                                                     required={true}
                                                     className="form-control"
