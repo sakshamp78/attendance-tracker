@@ -111,6 +111,12 @@ Now your API will be hosted on http://127.0.0.1:5000 .
 
 **After following all the above instruction you can explore the Attendance Tracker application in your local server**
 <p float="left">
+<img src="https://user-images.githubusercontent.com/103420351/199566354-c8d2d2d9-6a1f-43ba-a01f-070ceccf774f.png" width="300">
+<img src="https://user-images.githubusercontent.com/103420351/199564914-613d6658-4ad5-4955-a8ce-ebd4eb405e80.png" width="300">
+<img src="https://user-images.githubusercontent.com/103420351/199564941-e7b5918c-1375-4" width="300">
+<img src="https://user-images.githubusercontent.com/103420351/199564975-a04a3e23-05cc-4d25-8b17-6235c416b740.png" width="300">
+<img src="https://user-images.githubusercontent.com/103420351/199564987-b0cebdb8-d8f3-497a-b6f4-620243a1a092.png" width="300">
+<img src="https://user-images.githubusercontent.com/103420351/199564999-f782d7e8-3ffb-4927-a928-22305561f903.png" width="300">
 
 </p>
 
