@@ -37,6 +37,10 @@ This a an attendance tracker system which uses facial recognition technology for
     │  └── requirements.txt
     ├── .gitignore
     └── README.md
+
+## Implemention AI/ML in backend
+Here I have used face_recognition library for implementing one of the most important function of this project ,i.e, marking attendance by recognising the face. This library is built on Python , thats why I have used Flask as a backend framework just to use this library easily and implementing my APIs.
+
 ## Local Setup
 1. Clone the github repository.
 ```
