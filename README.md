@@ -1,3 +1,9 @@
+
+# Details:
+- # Name : Saksham Pandey
+- # University : IIT Dhanbad
+- # Department : Electrical Engineering
+
 <img src="https://user-images.githubusercontent.com/78557330/170858525-6e89b393-7e02-4615-9a88-7d9b2c0fa94e.png">
 
 # Attendance Portal
